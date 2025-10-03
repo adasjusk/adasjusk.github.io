@@ -1,1 +1,83 @@
-style
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #000;
+  background-image: url('bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background: rgba(75, 75, 75, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  background-image: url('adasjusk.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.card h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card .info {
+  font-size: 1em;
+  color: #ddd;
+  margin-bottom: 70px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  color: #ddd;
+  font-size: 1.8em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007BFF;
+}
+
+.footer {
+  font-size: 0.8em;
+  color: #ddd;
+  margin-top: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
