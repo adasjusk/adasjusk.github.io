@@ -1,83 +1,145 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  background-color: #000;
-  background-image: url('bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+:root{
+  --bg-image: url('bg.png');
+  --card-bg-dark: rgba(0,0,0,0.7);
+  --card-color-dark: #ddd;
+  --card-bg-light: rgba(255,255,255,0.95);
+  --card-color-light: #111;
+  --accent: #ff9100;
 }
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow-x:hidden;
+  background-color:#000;
+  background-image: var(--bg-image);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
-
-.card {
-  background: rgba(75, 75, 75, 0.7);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 320px;
-  text-align: center;
-  padding: 20px;
-  color: white;
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+body.dark .card{
+  background: var(--card-bg-dark);
+  color: var(--card-color-dark);
+}
+body.light .card{
+  background: var(--card-bg-light);
+  color: var(--card-color-light);
+}
+.card{
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  width:90%;
+  max-width:320px;
+  text-align:center;
+  padding:20px;
   backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.profile-img{
+  width:90px;
+  height:90px;
+  margin:0 auto 15px;
+  background-image:url('adasjusk.png');
+  background-size:cover;
+  background-position:center;
+  border-radius:50%;
+}
+.card h2{
+  font-size:1.6em;
+  font-weight:bold;
+  margin:0;
+}
+.card .info{
+  font-size:1em;
+  margin-bottom:70px;
+}
+.social-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:10px;
+}
+.social-links a i{
+  color:inherit;
+  font-size:1.8em;
+  transition: color 0.25s ease;
+}
+.social-links a:hover i{
+  color:var(--accent);
+}
+.footer{
+  font-size:0.8em;
+  margin-top:20px;
+}
+.footer p{margin:0}
+.theme-toggle{
+  position:fixed;
+  top:18px;
+  right:18px;
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.85);
+  border:0;
+  box-shadow:0 6px 14px rgba(0,0,0,0.12);
+  cursor:pointer;
+  z-index:9999;
+}
+body.dark .theme-toggle{
+  background: rgba(0,0,0,0.6);
+  color: #ffd; 
+}
+body.light .theme-toggle{
+  background: rgba(255,255,255,0.95);
+  color: #222;
+}
+.theme-toggle i{font-size:1.1rem}
+body.dark .card, body.dark .footer, body.dark .social-links a i{color:var(--card-color-dark)}
+body.light .card, body.light .footer, body.light .social-links a i{color:var(--card-color-light)}
+
+/* Page loader styles */
+.page-loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+  backdrop-filter: blur(6px);
+  z-index:10000;
+  transition:opacity 0.45s ease, visibility 0.45s ease;
 }
 
-.profile-img {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 15px;
-  background-image: url('adasjusk.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
+.page-loader--hidden{
+  opacity:0;
+  visibility:hidden;
 }
 
-.card h2 {
-  font-size: 1.6em;
-  font-weight: bold;
-  margin: 0;
+.loader{display:flex;gap:10px;align-items:end}
+.loader .dot{
+  width:12px;height:12px;border-radius:50%;background:#fff;display:block;
+  animation:loader-bounce 0.8s infinite ease-in-out;
+}
+.loader .dot:nth-child(2){animation-delay:0.12s;background:rgba(255,255,255,0.9)}
+.loader .dot:nth-child(3){animation-delay:0.24s;background:rgba(255,255,255,0.8)}
+
+@keyframes loader-bounce{
+  0%,100%{transform:translateY(0);opacity:0.6}
+  50%{transform:translateY(-14px);opacity:1}
 }
 
-.card .info {
-  font-size: 1em;
-  color: #ddd;
-  margin-bottom: 70px;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-.social-icon {
-  color: #ddd;
-  font-size: 1.8em;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: #007BFF;
-}
-
-.footer {
-  font-size: 0.8em;
-  color: #ddd;
-  margin-top: 20px;
-}
-
-.footer p {
-  margin: 0;
-}
+/* In light theme make dots darker for contrast */
+body.light .page-loader{background:linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85));}
+body.light .loader .dot{background:#111}
